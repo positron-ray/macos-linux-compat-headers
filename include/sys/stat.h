@@ -35,7 +35,14 @@
  *
  * $FreeBSD$
  */
-#include <limits.h>
-#if __has_include_next(<sys/limits.h>)
-#include_next(<sys/limits.h>)
-#endif
+#include_next <sys/stat.h>
+
+#define st_atim st_atimespec
+#define st_mtim st_mtimespec
+#define st_ctim st_ctimespec
+#define st_btim st_birthtimespec
+#define st_birthtim st_birthtimespec
+#define st_atimensec st_atimespec.tv_nsec
+#define st_mtimensec st_mtimespec.tv_nsec
+#define st_ctimensec st_ctimespec.tv_nsec
+#define st_birthtimensec st_birthtimespec.tv_nsec
